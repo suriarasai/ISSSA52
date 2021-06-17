@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Hello</title>
+</head>
+<body>
+<h1>Hello Page</h1>
+<h2>Data from model</h2>
+<p> Today is <span th:text="${today}">1 January 2021</span></p>
+<h2>Data from the properties file</h2>
+<p> Message is <span th:text="#{hello.message}">Default</span></p>
+</body>
+</html>
