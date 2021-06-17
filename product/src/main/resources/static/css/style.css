@@ -1,228 +1,599 @@
-/* css Zen Garden submission 003 - 'Stormweather' by Dave Shea - http://www.mezzoblue.com/ */
-/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
-/* All associated graphics copyright 2003, Dave Shea */
-/* Added: May 7th, 2003 */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url(http://fonts.googleapis.com/css?family=Play:400,700|Sarpanch:400,900,800,600,700,500);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
 
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
 
-/* IMPORTANT */
-/* This design is not a template. You may not reproduce it elsewhere without the designer's written permission. */
-/* The CSS itself may freely be used for anything you wish, but the associated graphics belong to the designer. */
-/* What you may use - .css files. What you may not use - .jpg, .gif, and .png files. */
-
-
-/* Credit to Phillipe Wittenbergh at http://www.l-c-n.com/ for Mac testing */
-
-/* The photos in this design come from my digital library. All were taken in Vancouver, BC. The car is on the
-    Granville St. Bridge, the leaves are West 6th Ave, and the snow/tree is West 10th Ave. Guess which
-    part of town I live in...
-
-    I'm still rather fond of this design. I'm glad Phillipe was able to iron out the various CSS bugs */
-
-
-/* basic elements */
 body {
-	font: 11px/15px georgia, serif;
-	text-align: center;
-	color: #fff;
-	background: #748A9B url(bg2.gif) 0 0 repeat-y;
-	margin: 0px;
-	}
-p {
-	/*font: 11px/15px georgia, serif;*/
-	text-align: justify;
-	margin-top: 0;
-	}
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: 'Play', sans-serif;
+  font-size: 16px;
+  font-size: 1em;
+  line-height: 1.5; }
+
+h1, h2, h3 {
+  font-family: 'Sarpanch', sans-serif;
+  line-height: 1.3; }
+
+h1 {
+  font-size: 48px;
+  font-size: 3em; }
+
+h2 {
+  font-size: 32px;
+  font-size: 2em; }
+
 h3 {
-	font: bold 14px georgia, serif;
-	text-transform: lowercase;
-	margin-bottom: 0;
-	}
-abbr { 
-	border-bottom: dotted 1px #fff; 
-	}
-a:link { 
-	font-weight: bold; 
-	text-decoration: underline; 
-	color: #A7D3F6;
-	}
-a:visited {
-	font-weight: bold;
-	text-decoration: underline;
-	color: #D1E9FC;
-	}
-a:active, a:hover {
-	text-decoration: underline;
-	color: #fff;
-	}
+  font-size: 24px;
+  font-size: 1.5em; }
 
+p {
+  background: white; }
 
-/* specific divs */
+a {
+  text-decoration: none;
+  color: #0000ff; }
+  a:hover {
+    color: #ff0000;
+    background: #ffff00;
+    font-weight: bold; }
+
+@media screen and (min-width: 650px) {
+  h1 {
+    font-size: 56px;
+    font-size: 3.5em;
+    line-height: 0.8; }
+
+  h2 {
+    font-size: 48px;
+    font-size: 3em; }
+
+  h3 {
+    font-size: 32px;
+    font-size: 2em; }
+
+  .summary,
+  .preamble,
+  .explanation,
+  .participation,
+  .benefits,
+  .requirements {
+    float: left;
+    width: 60%; }
+
+  .intro, .main.supporting {
+    overflow: hidden; }
+
+  .wrapper {
+    float: right;
+    width: 35%;
+    position: absolute;
+    top: 360px;
+    right: 0; } }
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 80px;
+    font-size: 5em; }
+
+  h2 {
+    font-size: 64px;
+    font-size: 4em; }
+
+  h3 {
+    font-size: 48px;
+    font-size: 3em; } }
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
 
 .page-wrapper {
-	background: #849AA9 url(bg1.gif) top left repeat-y;
-	text-align: left;
-	width: 750px; margin: 0px auto;
-	position: relative;
-	} 
-.supporting {
-	/*position: relative; top: -120px;*/
-	padding: 0px 40px 0px 0;
-	/*clear:right;*/
-	float:right;
-	width:430px;
-	}
+  overflow: hidden;
+  background: -webkit-linear-gradient(to bottom, #000, #000 3%, #fff 3%, #fff);
+  background: -moz-linear-gradient(to bottom, #000, #000 3%, #fff 3%, #fff);
+  background: -ms-linear-gradient(to bottom, #000, #000 3%, #fff 3%, #fff);
+  background: -o-linear-gradient(to bottom, #000, #000 3%, #fff 3%, #fff);
+  background: linear-gradient(to bottom, #000, #000 3%, #fff 3%, #fff);
+  background-size: 100% 200px; }
 
-/* using an image to replace text in an h1. This trick courtesy Douglas Bowman, http://www.stopdesign.com/articles/css/replace-text/ */
-header h1 {
-	background: transparent url(h1.jpg) no-repeat top left;
-	width: 750px;
-	height: 142px;
-	margin: 0px;
+@keyframes rfade {
+  0%, 50% {
+    background-color: #ff0000;
+    border: 4px solid black;
+    color: #ff0000; }
+  100% {
+    background-color: white; } }
+@keyframes yfade {
+  0%, 50% {
+    background-color: #ffff00;
+    color: #ffff00; }
+  100% {
+    background-color: white; } }
+@keyframes bfade {
+  0%, 50% {
+    background-color: #0000ff;
+    color: #0000ff; }
+  100% {
+    background-color: white; } }
+.intro {
+  overflow: hidden; }
+  .intro div {
+    float: left; }
 
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	}
-header h2 {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	}
+header {
+  overflow: hidden; }
+  header:before {
+    width: 31%;
+    height: 100px;
+    background: #0000ff;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black; }
 
-.summary { 
-	width: 685px; 
-	margin: 0px auto; 
-	position: relative; 
-	top: -50px;
-	}
-html>body .summary {
-	margin-top:-50px; 
-	top: 0;
-	}
-.summary p:first-child {
-	font-size: 1px;
-	color: white;
-	background: transparent url(panel1-2.jpg) no-repeat top left;
-	width: 449px; 
-	padding: 10px 0px 0px 5px; float: left; 
-	height: 268px; 
-	voice-family: "\"}\""; 
-	voice-family:inherit;
-	height: 258px; 
+h1 {
+  text-align: right;
+  float: right;
+  padding-bottom: 0.19em;
+  padding-right: 0.1em;
+  width: 70%;
+  border: 4px solid black;
+  background-color: white;
+  animation: rfade 3s ease; }
 
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	}
-.summary p:last-child {
-	color: #7593A7;
-	background: transparent url(panel3.jpg) no-repeat 0 0;
-	padding: 90px 45px 0px 45px;
-	float: right; 
-	width: 214px;
-	height: 338px; 
-	voice-family: "\"}\""; 
-	voice-family:inherit;
-	width: 124px;
-	height: 178px;
+h2 {
+  margin-left: 15px;
+  border-right: 4px solid black;
+  padding-left: 0.1em;
+  float: left;
+  width: 45%;
+  background: white;
+  border-top: 4px solid black;
+  border-left: 4px solid black;
+  background-color: white;
+  animation: bfade 4.5s ease; }
+  h2:after {
+    width: 100%;
+    height: 55px;
+    background: #ffff00;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black;
+    margin-top: 0.5em; }
 
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	}
-.summary p:last-child a:link, .summary p:last-child a:visited {
-	color: #7593A7;
-	}
-.summary p:last-child a:hover {
-	color: #85ABC5;
-	}
+.summary {
+  border-top: 4px solid black;
+  overflow: hidden; }
+  .summary p {
+    width: 50%; }
+  .summary p:first-of-type {
+    float: right;
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+    padding: 0.7em;
+    text-align: right;
+    background-color: white;
+    animation: yfade 6s ease; }
+    .summary p:first-of-type:before {
+      width: 10%;
+      float: right;
+      height: 70px;
+      background: #ff0000;
+      content: "";
+      display: block;
+      position: relative;
+      top: -1em;
+      right: -1em;
+      border: 4px solid black; }
+  .summary p:last-of-type {
+    float: left;
+    padding: 0.5em;
+    border-bottom: 4px solid black;
+    background-color: white;
+    animation: bfade 6s ease; }
 
-.preamble { 
-	/*position: relative; top: -120px; */
-	padding: 0px 0px 70px 33px; 
-	margin: 0px 0 20px 0px; 
-	width: 210px;
-	float: left;
-	background: transparent url(tag.gif) 50% 100% no-repeat;
-	}
-.preamble h2 { 
-	font: bold 14px georgia, serif; 
-	margin-top: 0px;
-	padding: 0px;
-	}
-.preamble p {
-	font: italic 12px/20px georgia, serif;
-	}
+.preamble {
+  border-top: 4px solid black;
+  padding: 0.8em;
+  padding-top: 0; }
+  .preamble h3, .preamble p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.5em;
+    border-left: 4px solid black;
+    border-right: 4px solid black; }
+  .preamble h3 {
+    border-bottom: 4px solid black;
+    background: white;
+    background-color: white;
+    animation: bfade 9s ease; }
+  .preamble p {
+    float: right;
+    border-left: 4px solid black;
+    padding: 0.7em;
+    background-color: white;
+    animation: rfade 9s ease; }
+    .preamble p:first-of-type {
+      border-top: 4px solid black; }
+    .preamble p:last-of-type {
+      border-bottom: 4px solid black;
+      padding: 0;
+      padding-left: 0.7em;
+      padding-right: 0.7em; }
+      .preamble p:last-of-type:after {
+        width: 100%;
+        height: 100px;
+        background: #0000ff;
+        content: "";
+        display: block;
+        position: relative;
+        border: 4px solid black;
+        margin-top: 0.5em;
+        right: 1em; }
+
+.main.supporting {
+  border-top: 4px solid black;
+  overflow: hidden; }
+  .main.supporting:before {
+    width: 40%;
+    height: 150px;
+    background: #ffff00;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black; }
+  .main.supporting:after {
+    width: 100%;
+    height: 150px;
+    background: #ffff00;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black;
+    overflow: hidden; }
+
+.explanation {
+  overflow: hidden; }
+  .explanation h3, .explanation p {
+    text-align: right; }
+  .explanation h3 {
+    width: 30%;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    float: left;
+    background: white;
+    padding: 0.7em;
+    background-color: white;
+    animation: bfade 15s ease; }
+  .explanation p {
+    width: 60.7%;
+    float: right;
+    padding: 0.7em;
+    border: 4px solid black; }
+    .explanation p:first-of-type {
+      background-color: white;
+      animation: yfade 15s ease; }
+    .explanation p:last-of-type {
+      background-color: white;
+      animation: bfade 15s ease; }
+    .explanation p:last-of-type:before {
+      width: 100%;
+      height: 150px;
+      background: #ff0000;
+      content: "";
+      display: block;
+      position: relative;
+      border: 4px solid black;
+      padding-top: 0;
+      right: -1em;
+      top: -1em; }
+
+.participation {
+  overflow: hidden;
+  padding: 0.7em; }
+  .participation:after {
+    width: 40%;
+    height: 200px;
+    background: #ff0000;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black;
+    clear: left;
+    right: -1em;
+    top: -1em; }
+  .participation h3 {
+    width: 60%;
+    float: right;
+    padding: 0.7em;
+    background: white;
+    border: 4px solid black;
+    background-color: white;
+    animation: rfade 18s ease; }
+  .participation p {
+    float: left;
+    width: 40%;
+    padding: 0.7em;
+    border: 4px solid black; }
+    .participation p:first-of-type:before {
+      width: 110%;
+      height: 50px;
+      background: #ffff00;
+      content: "";
+      display: block;
+      position: relative;
+      border: 4px solid black;
+      padding-top: 0;
+      top: -1em; }
+    .participation p:first-of-type {
+      padding-top: 0;
+      background-color: white;
+      animation: bfade 18s ease; }
+    .participation p:nth-of-type(2) {
+      background-color: white;
+      animation: yfade 18s ease; }
+    .participation p:last-of-type {
+      background-color: white;
+      animation: bfade 18s ease; }
+
+.benefits {
+  overflow: hidden;
+  border: 4px solid black; }
+  .benefits:before {
+    width: 35%;
+    height: 175px;
+    background: #ffff00;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black;
+    float: left;
+    top: -2em; }
+  .benefits h3, .benefits p {
+    padding: 0.7em;
+    background: white;
+    text-align: right; }
+  .benefits h3 {
+    border: 4px solid black;
+    background-color: white;
+    animation: bfade 21s ease; }
+  .benefits p {
+    width: 70%;
+    float: right;
+    border: 4px solid black;
+    background-color: white;
+    animation: yfade 21s ease; }
+  .benefits p:before {
+    width: 100%;
+    height: 30px;
+    background: #ff0000;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black;
+    float: left;
+    top: -1em;
+    right: -1em; }
+
+.requirements {
+  overflow: hidden; }
+  .requirements:before {
+    width: 20%;
+    height: 50px;
+    background: #ff0000;
+    content: "";
+    display: block;
+    position: relative;
+    border: 4px solid black; }
+  .requirements h3, .requirements p {
+    padding: 0.7em;
+    background: white; }
+  .requirements h3 {
+    border: 4px solid black;
+    background-color: white;
+    animation: yfade 24s ease; }
+    .requirements h3:after {
+      width: 45%;
+      height: 100px;
+      background: #0000ff;
+      content: "";
+      display: block;
+      position: relative;
+      border: 4px solid black;
+      float: right;
+      top: -0.85em; }
+  .requirements p:nth-of-type(1) {
+    background-color: white;
+    animation: rfade 24s ease;
+    border: 4px solid black; }
+  .requirements p:nth-of-type(2) {
+    width: 70%;
+    border: 4px solid black;
+    float: left;
+    padding: 1em;
+    background-color: white;
+    animation: bfade 24s ease; }
+    .requirements p:nth-of-type(2):before {
+      width: 25%;
+      height: 350px;
+      background: #ffff00;
+      content: "";
+      display: block;
+      position: relative;
+      bottom: -2em;
+      right: -3em;
+      border: 4px solid black;
+      float: right; }
+  .requirements p:nth-of-type(3) {
+    width: 45%;
+    float: left;
+    text-align: right;
+    border: 4px solid black;
+    background-color: white;
+    animation: yfade 24s ease; }
+    .requirements p:nth-of-type(3):after {
+      width: 10%;
+      height: 80px;
+      background: #0000ff;
+      content: "";
+      display: block;
+      position: absolute;
+      border: 4px solid black; }
+  .requirements p:nth-of-type(4) {
+    width: 45%;
+    float: right;
+    border: 4px solid black;
+    background-color: white;
+    animation: bfade 24s ease; }
+  .requirements p:nth-of-type(5) {
+    width: 80%;
+    float: right;
+    clear: both;
+    border: 4px solid black;
+    background-color: white;
+    animation: bfade 24s ease; }
 
 footer {
-	text-align: right;
-	clear: both;
-	}
-footer a {
-	font-weight: normal;
-	text-decoration: none;
-	margin-right: 10px;
-	border: solid 1px #859BAA;
-	padding: 6px;
-	}
-footer a:hover {
-	color: #7E868D;
-	background-color: #fff;
-	border-right: solid 1px #6F818D;
-	border-bottom: solid 1px #6F818D;
-	}
+  overflow: hidden;
+  padding: 1em;
+  border: 4px solid black;
+  background: #ff0000;
+  width: 80%;
+  float: right; }
+  footer a {
+    background: white;
+    border: 4px solid black;
+    padding: 1em;
+    float: left;
+    margin: 0.5em;
+    background-color: white;
+    animation: bfade 24s ease; }
 
 .design-selection {
-	position: absolute;
-	top: 15px;
-	left: 0px;
-	padding-left: 350px;
-	margin: 0px auto;
-	width: 730px;
-	voice-family: "\"}\"";
-	voice-family:inherit;
-	width: 380px;
-	}
-.sidebar h3 {
-	display: inline;
-	margin-right: 5px;
-	}
+  overflow: hidden; }
+  .design-selection h3 {
+    background: white;
+    padding: 0.5em;
+    border: 4px solid black;
+    width: 70%;
+    background-color: white;
+    animation: yfade 27s ease; }
+    .design-selection h3:before {
+      width: 30%;
+      height: 40px;
+      background: #ff0000;
+      border: 4px solid black;
+      content: "";
+      display: block;
+      position: relative;
+      left: -0.5em;
+      top: -0.5em; }
+  .design-selection nav {
+    background: white;
+    width: 90%;
+    float: right;
+    border: 4px solid black;
+    text-align: right;
+    padding: 1em;
+    margin-top: 1em;
+    background-color: white;
+    animation: bfade 27s ease; }
 
-.sidebar ul {
-	margin: 0px;
-	padding: 0px;
-	}
-.sidebar li {
-	font-size: 10px;
-	margin-right: 5px;
-	list-style-type: none;
-	display: inline;
-	}
-.sidebar li a {
-	font-weight: normal;
-	}
+.design-archives {
+  padding: 0.7em;
+  overflow: hidden; }
+  .design-archives:after {
+    width: 50%;
+    height: 80px;
+    background: #ff0000;
+    border: 4px solid black;
+    content: "";
+    display: block;
+    position: relative;
+    right: -1em;
+    float: right; }
+  .design-archives nav, .design-archives h3 {
+    background: white; }
+  .design-archives h3 {
+    border: 4px solid black;
+    background-color: white;
+    animation: yfade 30s ease; }
+  .design-archives nav {
+    border: 4px solid black;
+    width: 60%;
+    float: right;
+    background-color: white;
+    animation: bfade 30s ease; }
 
-.design-selection h3 {
-	font: bold 11px georgia;
-	letter-spacing: -1px;
-	}
-.design-selection li {
-	font: 11px/12px georgia;
-	letter-spacing: -1px;
-	color: #758C9B;
-	}
-.design-selection li a:link, .design-selection li a:visited {
-	font-weight: normal;
-	color: #fff;
-	text-decoration: none;
-	}
-.design-selection li a:hover {
-	color: #D1E9FC;
-	text-decoration: underline;
-	}
+.zen-resources {
+  overflow: hidden; }
+  .zen-resources h3, .zen-resources ul {
+    background: white; }
+  .zen-resources h3 {
+    padding: 1em;
+    text-align: right;
+    position: relative;
+    border: 4px solid black;
+    background-color: white;
+    animation: rfade 33s ease; }
+  .zen-resources ul {
+    padding: 0.7em;
+    border: 4px solid black;
+    background-color: white;
+    animation: bfade 33s ease; }
+    .zen-resources ul:before {
+      width: 50%;
+      height: 95px;
+      background: #ffff00;
+      border: 4px solid black;
+      content: "";
+      display: block;
+      position: relative;
+      bottom: -1em;
+      left: -1em;
+      float: left; }
 
-.zen-resources, .design-archives, #lfavorites {
-	padding: 0px 40px 0px 266px;
-	clear: both;
-	/*position: relative; top: -20px;*/
-	}
+/*# sourceMappingURL=style.css.map */

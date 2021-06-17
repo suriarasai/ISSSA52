@@ -1,16 +1,10 @@
 package sg.edu.iss.product.controllers;
 
-import java.util.ArrayList;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,18 +19,6 @@ public class ProductController {
 	@Autowired
 	ProductRepository prepo;
 	
-	@GetMapping("/list")
-	public String listProduct(Model model) {
-		ArrayList<Product> plist = (ArrayList<Product>) prepo.findAll();
-		model.addAttribute("plist", plist);
-		return "products";
-	}
-	
-		
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-				
-	}
 	
 	@GetMapping("/add")
 	public String showProductForm(Model model) {
@@ -46,12 +28,8 @@ public class ProductController {
 	}
 	
 	@GetMapping("/save")
-	public String saveProductForm(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult, Model model) {
+	public String saveProductForm(@ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
 		
-		if (bindingResult.hasErrors()) 
-		{
-			return "productform";
-		}
 		prepo.save(product);
 		return "forward:/product/listproducts";
 	}

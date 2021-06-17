@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+    <link rel="stylesheet" type="text/css" media="all" 
+          href="../../css/style.css"  th:href="@{/css/style.css}" />
+<title>sa52 Title</title>
+</head>
+<body>
+<h1>Language Demo Page</h1>
+<h2>Spring Web Class</h2>
+<p th:utext="#{hello}">Default Hello</p>
+<p th:utext="#{greeting}">Default Greet</p>
+<p th:utext="#{how.are.u}">Default How Are you</p>
+<p th:utext="#{custom.message}">Default Custom Greet</p>
+
+</body>
+</html>
