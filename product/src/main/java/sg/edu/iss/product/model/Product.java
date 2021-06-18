@@ -1,14 +1,15 @@
 package sg.edu.iss.product.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -16,19 +17,18 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+	@NotEmpty
+	@Size(min = 2, max =50)
 	private String name;
-	
 	private String brand;
-	
+	@Length(max=50)
 	private String description;
 	
 	private double price;
-	//@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd-MM-YYYY")
-	private LocalDate dom;
+	@DateTimeFormat(pattern = "dd/MM/YYYY")
+	private Date dom;
 
-	public Product(int id, String name, String brand, String description, double price, LocalDate dom) {
+	public Product(int id, String name, String brand, String description, double price, Date dom) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -38,7 +38,7 @@ public class Product {
 		this.dom = dom;
 	}
 
-	public Product(String name, String brand, String description, double price, LocalDate dom) {
+	public Product(String name, String brand, String description, double price, Date dom) {
 		super();
 		this.name = name;
 		this.brand = brand;
@@ -92,11 +92,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public LocalDate getDom() {
+	public Date getDom() {
 		return dom;
 	}
 
-	public void setDom(LocalDate dom) {
+	public void setDom(Date dom) {
 		this.dom = dom;
 	}
 

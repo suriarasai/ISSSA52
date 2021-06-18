@@ -1,5 +1,7 @@
 package sg.edu.iss.product.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +30,11 @@ public class ProductController {
 	}
 	
 	@GetMapping("/save")
-	public String saveProductForm(@ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+	public String saveProductForm(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult, Model model) {
 		
+		if (bindingResult.hasErrors()) {
+			return "productform";
+		}
 		prepo.save(product);
 		return "forward:/product/listproducts";
 	}

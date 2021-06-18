@@ -14,22 +14,28 @@
 		</fieldset>
 		<fieldset>
 			Name: <input type="text" th:field="*{name}">
-			
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 		</fieldset>
 		<fieldset>
 			Brand: <input type="text" th:field="*{brand}">
+			<p th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></p>
 		</fieldset>
 		<fieldset>
 			Description: <input type="text" th:field="*{description}">
+			<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
 		</fieldset>
 		
 		<fieldset>
 			Price: <input type="text" th:field="*{price}">
-			
+		    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>	
 		</fieldset>
 		<fieldset>
-			Date of Manufacture: <input type="datetime-local" th:field="*{dom}" pattern="dd-MM-yyyy"/>
-       		
+			Date of Manufacture:
+			<input type="text" th:field="*{dom}"
+				placeholder="dd-MM-yyyy"
+				th:text="${#dates.format(product.dom, 'dd-MM-yyyy')}" />
+				
+			<p th:if="${#fields.hasErrors('dom')}" th:errors="*{dom}"></p>	
 		</fieldset>
 		<fieldset>
 			<input type="submit" value="Save"/>
