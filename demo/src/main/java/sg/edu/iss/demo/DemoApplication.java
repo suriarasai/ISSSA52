@@ -1,18 +1,11 @@
 package sg.edu.iss.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import sg.edu.iss.demo.domain.Department;
-import sg.edu.iss.demo.domain.Employee;
-import sg.edu.iss.demo.domain.ParkingSpace;
-import sg.edu.iss.demo.domain.Project;
 import sg.edu.iss.demo.repo.DepartmentRepository;
 import sg.edu.iss.demo.repo.EmployeeRepository;
 import sg.edu.iss.demo.repo.ParkingSpaceRepository;

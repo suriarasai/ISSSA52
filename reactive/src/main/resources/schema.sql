@@ -1,0 +1,1 @@
+CREATE TABLE product (id SERIAL PRIMARY KEY, name VARCHAR(255), product_id int, version int, weight int);
