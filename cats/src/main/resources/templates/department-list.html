@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Department List</title>
+</head>
+<body>
+    <header th:insert="fragments/layout.html :: header"> </header>
+
+	<h3>Department List page</h3>
+	<a th:href="@{/admin/department/create}">Add Department</a>
+	<div th:if="${not #lists.isEmpty(departmentList)}">
+		<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+
+			<tr class="listHeading">
+				<th><span th:text="#{fieldLabel.departmentId}"></span></th>
+				<th><span th:text="#{fieldLabel.managerId}"></span></th>
+				<th><span th:text="#{caption.edit}"></span></th>
+				<th><span th:text="#{caption.delete}"></span></th>
+			</tr>
+			<tr th:each="department : ${departmentList}" class="listRecord">
+				<td align="left" th:text="${department.departmentId}">Id</td>
+				<td align="left" th:text="${department.managerInCharge}">Manager</td>
+
+				<td><a
+					th:href="@{/admin/department/edit/}+${department.departmentId}"
+					class="btn btn-default"><span th:text="#{caption.edit}"></span></a></td>
+				<td><a
+					th:href="@{/admin/department/delete/}+${department.departmentId}"
+					class="btn btn-default"><span th:text="#{caption.delete}"></span></a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

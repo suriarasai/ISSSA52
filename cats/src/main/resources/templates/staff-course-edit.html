@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Edit Department</title>
+</head>
+<body>
+<header th:insert="fragments/layout.html :: header" ></header>
+	<h3>Edit Course Application Page</h3>
+	<form action="#" th:action="@{/staff/course/edit/}+${course.courseId}"
+		th:object="${course}" method="post">
+		<table>
+			<tbody>
+				<tr>
+					<td><input type="hidden" th:field="*{courseId}" /> <input
+						type="hidden" th:field="*{employeeId}" /> <input type="hidden"
+						th:field="*{status}" /> <span th:text="#{fieldLabel.courseName}"></span></td>
+					<td><input type="text" th:field="*{courseName}" size="40" /></td>
+					<td th:if="${#fields.hasErrors('courseName')}"
+						th:errors="*{courseName}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.organiser}"></span></td>
+					<td><input type="text" th:field="*{organiser}" size="40" /></td>
+					<td th:if="${#fields.hasErrors('organiser')}"
+						th:errors="*{organiser}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.startDate}"></span></td>
+					<td><input type="text" th:field="*{fromDate}" size="40" /></td>
+					<td th:if="${#fields.hasErrors('fromDate')}"
+						th:errors="*{fromDate}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.endDate}"></span></td>
+					<td><input type="text" th:field="*{toDate}" size="40" /></td>
+					<td th:if="${#fields.hasErrors('toDate')}" th:errors="*{toDate}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.fees}"></span></td>
+					<td><input type="text" th:field="*{fees}" size="20" /></td>
+					<td><span th:text="#{fieldLabel.gstIncluded}"></span></td>
+					<td><input type="checkbox" th:field="*{gstIncluded}" /></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.justification}"></span></td>
+					<td colspan="3"><textarea th:field="*{justification}"
+							th:rows="${justification}" cols="40"></textarea></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.status}"></span></td>
+					<td><input type="text" th:field="*{status}" size="20"
+						disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Update" class="blcass" /></td>
+					<td></td>
+					<td><input type="reset" value="Reset" class="blcass" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

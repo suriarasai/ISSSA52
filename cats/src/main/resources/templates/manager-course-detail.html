@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Manager Approval Page</title>
+</head>
+<body>
+	<header th:insert="fragments/layout.html :: header"></header>
+	<h3 th:utext="#{title.courseDetailsHistory}">Course History</h3>
+
+	<table>
+		<tr>
+			<th align="right"><span th:text="#{fieldLabel.courseId}">Course
+					ID</span></th>
+			<td colspan="3" th:text="${course.courseId}">Id</td>
+		</tr>
+		<tr>
+			<th align="right"><span th:text="fieldLabel.courseName">Course
+					Name</span></th>
+			<td colspan="3" th:text="${course.courseName}">Name</td>
+		</tr>
+		<tr>
+			<th align="right"><span th:text="#{fieldLabel.organiser}">Organiser</span>
+			</th>
+			<td colspan="3" th:text="${course.organiser}">Organiser</td>
+		</tr>
+		<tr>
+			<th align="right"><span th:text="#{fieldLabel.startDate}">Start
+					Date</span></th>
+			<td th:text="${#dates.format(course.fromDate, 'dd-MMM-yyyy')}">
+				From Date</td>
+			<th align="right"><span th:text="#{fieldLabel.endDate}">End
+					Date</span></th>
+			<td th:text="${#dates.format(course.toDate, 'dd-MMM-yyyy')}">To
+				Date</td>
+		</tr>
+		<tr>
+			<th align="right"><span th:text="#{fieldLabel.fees}">Fees</span>
+			</th>
+			<td th:text="${course.fees}">Fees</td>
+			<th align="right"><span th:text="#{fieldLabel.gstIncluded}">GST
+					Included</span></th>
+			<td th:if="${course.gstIncluded}" th:text="#{caption.yes}"></td>
+		</tr>
+		<tr>
+			<th align="right"><span th:text="#{fieldLabel.justification}">Justification</span>
+			</th>
+			<td colspan="3" th:text="${course.justification}">Justification</td>
+		</tr>
+		<tr>
+			<th align="right"><span th:text="#{fieldLabel.status}">Status</span>
+			</th>
+			<td colspan="3" th:text="${course.status}">Status</td>
+		</tr>
+	</table>
+
+
+	<form action="#"
+		th:action="@{/manager/course/edit/}+${course.courseId}"
+		th:object="${approve}" method="post">
+		<table>
+			<tr>
+				<td>
+					<fieldset>
+						<input type="radio" th:field="*{decision}" th:value="APPROVED" />
+						<label th:text="#{caption.approve}"></label> &nbsp;&nbsp; <input
+							type="radio" th:field="*{decision}" th:value="REJECTED" /> <label
+							th:text="#{caption.reject}"></label>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td><fieldset>
+						<span th:text="#{fieldLabel.managerComment}">Manager
+							Comment</span> <br>
+						<textarea rows="4" cols="60" th:field="*{comment}"> Text Area</textarea>
+					</fieldset></td>
+			</tr>
+			<tr>
+				<td><fieldset>
+						<input th:type="submit" th:value="Update" class="blcass" />
+					</fieldset></td>
+
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

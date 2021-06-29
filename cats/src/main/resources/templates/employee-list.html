@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Employee List</title>
+</head>
+<body>
+<header th:insert="fragments/layout.html :: header" ></header>
+	<h3>Employee List page</h3>
+	<a th:href="@{/admin/employee/create}">Add
+		Employee</a>
+
+	<div th:if="${not #lists.isEmpty(employeeList)}">
+		<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+
+			<tr class="listHeading">
+				<th><span th:text="#{fieldLabel.employeeId}"></span></th>
+				<th><span th:text="#{fieldLabel.managerId}"></span></th>
+				<th><span th:text="#{fieldLabel.name}"></span></th>
+				<th><span th:text="#{caption.edit}"></span></th>
+				<th><span th:text="#{caption.delete}"></span></th>
+			</tr>
+			<tr th:each="employee : ${employeeList}" class="listRecord">
+				<td align="left" th:text="${employee.employeeId}">Employee Id</td>
+				<td align="left" th:text="${employee.managerId}">Manager Id</td>
+				<td align="left" th:text="${employee.name}">Name</td>
+
+				<td><a
+					th:href="@{/admin/employee/edit/}+${employee.employeeId}"
+					class="btn btn-default"><span th:text="#{caption.edit}"></span></a></td>
+				<td><a
+					th:href="@{/admin/employee/delete/}+${employee.employeeId}"
+					class="btn btn-default"><span th:text="#{caption.delete}"></span></a></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

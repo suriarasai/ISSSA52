@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>New User Page</title>
+</head>
+<body>
+	<header th:insert="fragments/layout.html :: header"></header>
+	<h3>Edit User page</h3>
+	<form action="#" th:action="@{'/admin/user/create'}"
+		th:object="${user}" method="post">
+		<table>
+			<tbody>
+
+				<tr>
+					<td><span th:text="#{fieldLabel.userId}"></span></td>
+					<td><input type="text" th:field="*{userId}" /></td>
+					<td th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.username}"></span></td>
+					<td><input type="text" th:field="*{name}" /></td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.password}"></span></td>
+					<td><input type="text" th:field="*{password}" /></td>
+					<td th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}"></td>
+				</tr>
+				<tr>
+					<td><label th:for="*{employeeId}">Emp</label></td>
+					<td><select th:field="*{employeeId}">
+							<option th:each="selectOption : ${eidlist}"
+								th:value="${selectOption}" th:text="${selectOption}">
+								selectOption</option>
+					</select></td>
+					<td th:if="${#fields.hasErrors('employeeId')}"
+						th:errors="*{employeeId}"></td>
+				</tr>
+				<tr>
+					<td><label for="roles">User roles (multiple select):</label></td>
+					<td></td>
+					<td><select id="roleSet" th:field="*{roleSet}" size="03"
+						multiple="multiple">
+							<option th:each="role:${roles}" th:value="${role.roleId}"
+								th:text="${role.description}">Roles</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Create" /></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

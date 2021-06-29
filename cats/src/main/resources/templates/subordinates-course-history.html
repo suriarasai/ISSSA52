@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Manager Approval Page</title>
+</head>
+<body>
+	<header th:insert="fragments/layout.html :: header"></header>
+	<h2>Subordinates Course History Page</h2>
+
+	<div th:if="${not #lists.isEmpty(submap)}">
+		<table>
+			<tr class="listRecord" th:each="subordinate, stat : ${submap} ">
+				<td>
+					<div th:if="${not #lists.isEmpty(subordinate.value)}">
+						<h3 th:text="${subordinate.key.name}+' Course History'">
+							Course History</h3>
+						<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+							<tr class="listHeading">
+								<th th:utext="#{fieldLabel.reference}">Reference</th>
+								<th th:utext="#{fieldLabel.name}">Name</th>
+								<th th:utext="#{fieldLabel.courseName}">Course</th>
+								<th th:utext="#{fieldLabel.startDate}">Start</th>
+								<th th:utext="#{fieldLabel.endDate}">End</th>
+								<th th:utext="#{fieldLabel.fees}">Fees</th>
+								<th th:utext="#{fieldLabel.status}">Status</th>
+							</tr>
+							<tr class="listRecord" th:each="course : ${subordinate.value}">
+								<td th:text="${course.courseId}"></td>
+								<td th:text="${course.employeeId}"></td>
+								<td th:text="${course.courseName}"></td>
+								<td th:text="${course.fromDate}"></td>
+								<td th:text="${course.toDate}"></td>
+								<td th:text="${course.fees}"></td>
+								<td th:text="${course.status}"></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

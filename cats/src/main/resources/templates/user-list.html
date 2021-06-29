@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>User List</title>
+</head>
+<body>
+<header th:insert="fragments/layout.html :: header" ></header>
+	<h3>User List page</h3>
+	<a th:href="@{/admin/user/create}">Add User</a>
+	<div th:if="${not #lists.isEmpty(userList)}">
+
+		<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+			<thead>
+				<tr class="listHeading">
+					<th><span th:text="#{fieldLabel.userId}"></span></th>
+					<th><span th:text="#{fieldLabel.username}"></span></th>
+					<th><span th:text="#{fieldLabel.password}"></span></th>
+					<th><span th:text="#{fieldLabel.employeeId}"></span></th>
+					<th><span th:text="#{caption.edit}"></span></th>
+					<th><span th:text="#{caption.delete}"></span></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="user : ${userList}" class="listRecord">
+					<td th:text="${user.userId}">Id</td>
+					<td th:text="${user.name}">Name</td>
+					<td th:text="${user.password}">Password</td>
+					<td th:text="${user.employeeId}">Employee</td>
+
+					<td><a th:href="@{/admin/user/edit/}+${user.userId}"
+						class="btn btn-default"><span th:text="#{caption.edit}"></span></a></td>
+					<td><a th:href="@{/admin/user/delete/}+${user.userId}"
+						class="btn btn-default"><span th:text="#{caption.delete}"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

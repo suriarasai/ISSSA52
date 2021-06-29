@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>History Page</title>
+</head>
+<body>
+<header th:insert="fragments/layout.html :: header" ></header>
+	<h3>Employee Course History</h3>
+
+	<div th:if="${not #lists.isEmpty(chistory)}">
+		<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+			<tr class="listHeading">
+				<th><span th:text="#{fieldLabel.reference}"></span></th>
+				<th><span th:text="#{fieldLabel.name}"></span></th>
+				<th><span th:text="#{fieldLabel.courseName}"></span></th>
+				<th><span th:text="#{fieldLabel.startDate}"></span></th>
+				<th><span th:text="#{fieldLabel.endDate}"></span></th>
+				<th><span th:text="#{fieldLabel.fees}"></span></th>
+				<th><span th:text="#{fieldLabel.status}"></span></th>
+				<th><span th:text="#{fieldLabel.update}"></span></th>
+				<th><span th:text="#{fieldLabel.withdraw}"></span></th>
+			</tr>
+			<tr th:each="course : ${chistory}" class="listRecord">
+				<td align="left" th:text="${course.courseId}">Id</td>
+				<td align="left" th:text="${course.employeeId}">Employee</td>
+				<td align="left" th:text="${course.courseName}">Name</td>
+				<td align="left" th:text="${#dates.format(course.fromDate, 'dd/MM/yyyy')}">From</td>
+				<td align="left" th:text="${#dates.format(course.toDate, 'dd/MM/yyyy')}">To</td>
+				<td align="left" th:text="${course.fees}">Fees</td>
+				<td align="left" th:text="${course.status}">Status</td>
+
+				<td>
+					<div  th:if="${#strings.equals(course.status, 'SUBMITTED')  or #strings.equals(course.status,'UPDATED')}" >
+							<a th:href="@{/staff/course/edit/}+${course.courseId}">Update</a>
+					</div>
+				</td>
+					<td>
+					
+						<div  th:if="${#strings.equals(course.status, 'SUBMITTED')  or #strings.equals(course.status,'UPDATED')}" >
+							<a th:href="@{/staff/course/withdraw/}+${course.courseId}">Withdraw</a>
+					   </div>
+					
+					
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

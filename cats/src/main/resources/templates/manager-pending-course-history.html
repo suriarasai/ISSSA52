@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Manager Approval Page</title>
+</head>
+<body>
+	<header th:insert="fragments/layout.html :: header"></header>
+	<h3 th:utext="#{title.courseDetailsHistory}">Course History</h3>
+	<div th:if="${not #lists.isEmpty(pendinghistory)}">
+		<table >
+			<tr class="listRecord" th:each="entry, stat : ${pendinghistory} ">
+				<td>
+				 <div th:if="${not #lists.isEmpty(entry.value)}">
+				   <span th:text="${entry.key.name}">Name</span> <br />
+					<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+						<tr class="listHeading">
+							<th th:utext="#{fieldLabel.reference}">Reference</th>
+							<th th:utext="#{fieldLabel.name}">Name</th>
+							<th th:utext="#{fieldLabel.courseName}">Course</th>
+							<th th:utext="#{fieldLabel.startDate}">Start</th>
+							<th th:utext="#{fieldLabel.endDate}">End</th>
+							<th th:utext="#{fieldLabel.fees}">Fees</th>
+							<th th:utext="#{fieldLabel.status}">Status</th>
+							<th th:utext="#{title.courseDetails}">Course</th>
+						</tr>
+						<tr class="listRecord" th:each="course : ${entry.value}">
+							<td th:text="${course.courseId}">Id</td>
+							<td th:text="${course.employeeId}">Emp</td>
+							<td th:text="${course.courseName}">Name</td>
+							<td th:text="${course.fromDate}">From</td>
+							<td th:text="${course.toDate}">To</td>
+							<td th:text="${course.fees}">Fee</td>
+							<td th:text="${course.status}">Status</td>
+							<td><a
+								th:href="@{/manager/course/display/}+${course.courseId}"
+								class="btn btn-default"><span th:text="#{caption.detail}"></span></a></td>
+						</tr>
+					</table>
+					</div>
+					</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

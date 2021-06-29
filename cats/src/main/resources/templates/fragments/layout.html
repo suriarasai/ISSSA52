@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div th:fragment="header" id="header">
+		<table>
+			<tr>
+				<td th:width="50"><img th:src="@{/image/cats.gif}" /></td>
+				<td>
+					<h1 th:utext="#{hello}+':'+${session.usession.user.name}"></h1>
+				</td>
+		</table>
+		<div th:fragment="menu" id="menu">
+			<div th:if="${not #lists.isEmpty(session.usession.user.roleSet)}"
+				th:object="${session.usession.user}" class="sidebar">
+				<ul class="nav navbar-nav">
+					<table>
+						<tr>
+							<th th:each="role : ${session.usession.user.roleSet}"><span
+								th:if="${role.roleId == 'admin'}">
+									<li class="dropdown"><a class="dropdown-toggle"
+										data-toggle="dropdown" href="#">Administrator Menu<span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a th:href="@{/admin/user/list}"
+												th:utext="#{menu.admin.ulist}">User List </a></li>
+											<li><a th:href="@{/admin/role/list}"
+												th:utext="#{menu.admin.rlist}">Role List</a></li>
+											<li><a th:href="@{/admin/employee/list}"
+												th:utext="#{menu.admin.elist}">Employee List</a></li>
+											<li><a th:href="@{/admin/department/list}"
+												th:utext="#{menu.admin.dlist}">Department List</a></li>
+										</ul></li>
+							</span> <span th:if="${role.roleId == 'manager'}">
+									<li class="dropdown"><a class="dropdown-toggle"
+										data-toggle="dropdown" href="#">Manager Menu<span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a th:href="@{/manager/pending}"
+												th:utext="#{menu.coursesForApproval}">Pending Approvals</a></li>
+											<li><a th:href="@{/manager/shistory}"
+												th:utext="#{menu.subordinateHistory}">Subordinates
+													History</a></li>
+										</ul></li>
+							</span> <span th:if="${role.roleId == 'staff'}">
+									<li class="dropdown"><a class="dropdown-toggle"
+										data-toggle="dropdown" href="#">Staff Menu<span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a th:href="@{/staff/history}"
+												th:utext="#{menu.personalHistory}">Personal History</a></li>
+											<li><a th:href="@{/staff/course/create}"
+												th:utext="#{menu.courseSubmit}">Apply for course</a></li>
+											<li><a th:href="@{/staff/logout}"
+												th:utext="#{menu.logout}">Logout</a></li>
+										</ul></li>
+							</span></th>
+						</tr>
+					</table>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

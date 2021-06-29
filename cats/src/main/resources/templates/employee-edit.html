@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/simple.css}"
+	href="../../static/css/simple.css" />
+<title>Edit Employee</title>
+</head>
+<body>
+ <header th:insert="fragments/layout.html :: header" ></header>
+ 	<h3>Edit Employee page</h3>
+	<form action="#"
+		th:action="@{/admin/employee/edit/'+employee.employeeId}"
+		th:object="${employee}" method="post">
+		<table>
+			<tbody>
+				<tr>
+					<td><span th:text="#{fieldLabel.employeeId}"></span></td>
+					<td><fieldset><input type="text" th:field="*{employeeId}" readonly="readonly"/></fieldset></td>
+					<td th:if="${#fields.hasErrors('employeeId')}"
+						th:errors="*{employeeId}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.managerId}"></span></td>
+					<td><fieldset><select th:field="*{managerId}">
+							<option th:each="manager : ${eidlist}"
+								th:value="${manager}"
+								th:text="${manager}">List</option>
+					</select></fieldset></td>
+					<td th:if="${#fields.hasErrors('managerId')}"
+						th:errors="*{managerId}"></td>
+				</tr>
+				<tr>
+					<td><span th:text="#{fieldLabel.name}"></span></td>
+					<td><fieldset><input type="text" th:field="*{name}" /></fieldset></td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+				</tr>
+				<tr>
+					<td><fieldset><input type="submit" value="Update" class="blcass" /></fieldset></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+
+</body>
+</html>
